@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Cinex" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-B9JUCOR\SQL_INSTANCE;Initial Catalog=Cinex;Integrated Security=True" SettingsObjectName="Proyecto_Cine.Properties.Settings" SettingsPropertyName="CinexConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Clientes" Member="Clientes">
+    <Type Name="Cliente">
+      <Column Name="IDCLIENTE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DNI" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CORREO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FECHADENACIMIENTO" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Habilitado" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cine" Member="Cines">
+    <Type Name="Cine">
+      <Column Name="IDCINE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDTIPOCINE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DIRECCION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FECHA_APERTURA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CONTACTO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Cine" Member="Tipo_Cines">
+    <Type Name="Tipo_Cine">
+      <Column Name="IDTIPOCINE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pelicula" Member="Peliculas">
+    <Type Name="Pelicula">
+      <Column Name="IDPELICULA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TITULO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_ESTRENO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDGENERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDPAIS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SINOPSIS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DURACION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDTIPOCENSURA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Censura" Member="Censuras">
+    <Type Name="Censura">
+      <Column Name="IDCENSURA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRECENSURA" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pais" Member="Pais">
+    <Type Name="Pais">
+      <Column Name="IDPAIS" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PAIS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Genero" Member="Generos">
+    <Type Name="Genero">
+      <Column Name="IDGENERO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE_GENERO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sala" Member="Salas">
+    <Type Name="Sala">
+      <Column Name="IDSALA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCINE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CANT_BUTACAS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CANT_FILAS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CANT_COLUMNAS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Modalidad" Member="Tipo_Modalidads">
+    <Type Name="Tipo_Modalidad">
+      <Column Name="IDTIPO_MODALIDAD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Empleado" Member="Tipo_Empleados">
+    <Type Name="Tipo_Empleado">
+      <Column Name="IDTIPO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleado" Member="Empleados">
+    <Type Name="Empleado">
+      <Column Name="IDEMPLEADO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE_EMPLEADO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SUELDO" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_INICIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDTIPO_MODALIDAD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDTIPO_EMPLEADO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CONTRASEÑA" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BLOQUEADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funcion" Member="Funcions">
+    <Type Name="Funcion">
+      <Column Name="IDFUNCION" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FECHAFUNCION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDPELICULA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDCINE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDSALA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HORARIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Entrada" Member="Tipo_Entradas">
+    <Type Name="Tipo_Entrada">
+      <Column Name="IDTIPOENTRADA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Butaca" Member="Butacas">
+    <Type Name="Butaca">
+      <Column Name="IDFUNCION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDBUTACA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="INDICE_FILA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="INDICE_COLUMNA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LIBRE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funcion_Entrada" Member="Funcion_Entradas">
+    <Type Name="Funcion_Entrada">
+      <Column Name="IDFUNCION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDTIPOENTRADA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRECIO" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IDENTRADA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
