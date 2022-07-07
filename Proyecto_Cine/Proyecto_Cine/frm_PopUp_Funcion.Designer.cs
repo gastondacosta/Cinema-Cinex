@@ -42,15 +42,16 @@
             this.cbo_Pelicula = new System.Windows.Forms.ComboBox();
             this.cbo_Sala = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbo_tipo = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nud_Precio = new System.Windows.Forms.NumericUpDown();
-            this.dgv_precios = new System.Windows.Forms.DataGridView();
             this.btn_Agregar = new System.Windows.Forms.Button();
+            this.dgv_precios = new System.Windows.Forms.DataGridView();
+            this.nud_Precio = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbo_tipo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_Precio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_precios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Precio)).BeginInit();
             this.SuspendLayout();
             // 
             // Pelicula
@@ -86,7 +87,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancelar.Location = new System.Drawing.Point(162, 501);
+            this.btn_Cancelar.Location = new System.Drawing.Point(162, 504);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 39;
@@ -96,7 +97,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_Aceptar.Location = new System.Drawing.Point(51, 501);
+            this.btn_Aceptar.Location = new System.Drawing.Point(51, 504);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(75, 23);
             this.btn_Aceptar.TabIndex = 38;
@@ -175,6 +176,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_Eliminar);
             this.groupBox1.Controls.Add(this.btn_Agregar);
             this.groupBox1.Controls.Add(this.dgv_precios);
             this.groupBox1.Controls.Add(this.nud_Precio);
@@ -189,35 +191,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Precios";
             // 
-            // label4
+            // btn_Agregar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Tipo";
+            this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Agregar.Location = new System.Drawing.Point(46, 94);
+            this.btn_Agregar.Name = "btn_Agregar";
+            this.btn_Agregar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Agregar.TabIndex = 57;
+            this.btn_Agregar.Text = "Agregar";
+            this.btn_Agregar.UseVisualStyleBackColor = true;
+            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
-            // cbo_tipo
+            // dgv_precios
             // 
-            this.cbo_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_tipo.FormattingEnabled = true;
-            this.cbo_tipo.Location = new System.Drawing.Point(130, 26);
-            this.cbo_tipo.Name = "cbo_tipo";
-            this.cbo_tipo.Size = new System.Drawing.Size(148, 21);
-            this.cbo_tipo.TabIndex = 57;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 58;
-            this.label5.Text = "Precio";
+            this.dgv_precios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_precios.Location = new System.Drawing.Point(6, 129);
+            this.dgv_precios.Name = "dgv_precios";
+            this.dgv_precios.ReadOnly = true;
+            this.dgv_precios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_precios.Size = new System.Drawing.Size(274, 147);
+            this.dgv_precios.TabIndex = 60;
             // 
             // nud_Precio
             // 
@@ -232,24 +225,46 @@
             this.nud_Precio.Size = new System.Drawing.Size(148, 20);
             this.nud_Precio.TabIndex = 59;
             // 
-            // dgv_precios
+            // label5
             // 
-            this.dgv_precios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_precios.Location = new System.Drawing.Point(6, 140);
-            this.dgv_precios.Name = "dgv_precios";
-            this.dgv_precios.Size = new System.Drawing.Size(274, 136);
-            this.dgv_precios.TabIndex = 60;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 58;
+            this.label5.Text = "Precio";
             // 
-            // btn_Agregar
+            // cbo_tipo
             // 
-            this.btn_Agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Agregar.Location = new System.Drawing.Point(105, 107);
-            this.btn_Agregar.Name = "btn_Agregar";
-            this.btn_Agregar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Agregar.TabIndex = 57;
-            this.btn_Agregar.Text = "Agregar";
-            this.btn_Agregar.UseVisualStyleBackColor = true;
-            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
+            this.cbo_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_tipo.FormattingEnabled = true;
+            this.cbo_tipo.Location = new System.Drawing.Point(130, 26);
+            this.cbo_tipo.Name = "cbo_tipo";
+            this.cbo_tipo.Size = new System.Drawing.Size(148, 21);
+            this.cbo_tipo.TabIndex = 57;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Tipo";
+            // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Eliminar.Location = new System.Drawing.Point(156, 94);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eliminar.TabIndex = 61;
+            this.btn_Eliminar.Text = "Eliminar";
+            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // frm_PopUp_Funcion
             // 
@@ -279,8 +294,8 @@
             this.Load += new System.EventHandler(this.frm_PopUp_Funcion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_Precio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_precios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Precio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +322,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgv_precios;
         private System.Windows.Forms.Button btn_Agregar;
+        private System.Windows.Forms.Button btn_Eliminar;
     }
 }

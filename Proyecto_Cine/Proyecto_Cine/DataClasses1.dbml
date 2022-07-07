@@ -139,4 +139,23 @@
       <Column Name="IDENTRADA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Reserva" Member="Reservas">
+    <Type Name="Reserva">
+      <Column Name="IDRESERVA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCLIENTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDEMPLEADO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TOTAL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="HABILITADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalle_Reserva" Member="Detalle_Reservas">
+    <Type Name="Detalle_Reserva">
+      <Column Name="IDRESERVA" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCLIENTE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PRECIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDFUNCION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDBUTACA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HABILTIADO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

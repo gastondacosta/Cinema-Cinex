@@ -52,5 +52,11 @@ namespace Proyecto_Cine
             frm_Mantenimiento_Funcion fun = new frm_Mantenimiento_Funcion();
             fun.ShowDialog();
         }
+
+        private void reservasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frm_Reserva res = new frm_Reserva();
+            res.ShowDialog();
+        }
     }
 }

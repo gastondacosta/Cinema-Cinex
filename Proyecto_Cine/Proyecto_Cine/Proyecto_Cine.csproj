@@ -126,14 +126,36 @@
     <Compile Include="frm_PopUp_Pelicula.Designer.cs">
       <DependentUpon>frm_PopUp_Pelicula.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_PopUp_Reserva_BuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PopUp_Reserva_BuscarCliente.Designer.cs">
+      <DependentUpon>frm_PopUp_Reserva_BuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PopUp_Reserva_BuscarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PopUp_Reserva_BuscarEmpleado.Designer.cs">
+      <DependentUpon>frm_PopUp_Reserva_BuscarEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_PopUp_Sala.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_PopUp_Sala.Designer.cs">
       <DependentUpon>frm_PopUp_Sala.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Reserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Reserva.Designer.cs">
+      <DependentUpon>frm_Reserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Funcion.cs" />
+    <Compile Include="Pelicula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs" />
+    <Compile Include="TipoEntrada.cs" />
     <EmbeddedResource Include="frm_Mantenimiento_Cine.resx">
       <DependentUpon>frm_Mantenimiento_Cine.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,8 +192,17 @@
     <EmbeddedResource Include="frm_PopUp_Pelicula.resx">
       <DependentUpon>frm_PopUp_Pelicula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_PopUp_Reserva_BuscarCliente.resx">
+      <DependentUpon>frm_PopUp_Reserva_BuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PopUp_Reserva_BuscarEmpleado.resx">
+      <DependentUpon>frm_PopUp_Reserva_BuscarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_PopUp_Sala.resx">
       <DependentUpon>frm_PopUp_Sala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Reserva.resx">
+      <DependentUpon>frm_Reserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -205,6 +236,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

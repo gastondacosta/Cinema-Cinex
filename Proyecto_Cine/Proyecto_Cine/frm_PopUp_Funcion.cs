@@ -52,6 +52,12 @@ namespace Proyecto_Cine
                     cbo_Cine.SelectedValue = f.IDCINE;
                     cbo_Sala.SelectedValue = f.IDSALA;
                 }
+                listaEntrada = (from fune in db.Funcion_Entradas
+                               join tipoe in db.Tipo_Entradas
+                               on fune.IDTIPOENTRADA equals tipoe.IDTIPOENTRADA
+                                where fune.IDFUNCION.Equals(Id) && fune.HABILITADO.Equals(true)
+                               select new Entrada { idTipoEntrada = fune.IDTIPOENTRADA, nombreTipo = tipoe.NOMBRE, precio = Convert.ToDecimal(fune.PRECIO) }).ToList();
+                dgv_precios.DataSource = listaEntrada;
             }
         }
         private void cbo_Cine_SelectedValueChanged(object sender, EventArgs e)
@@ -79,7 +85,7 @@ namespace Proyecto_Cine
                         if (MessageBox.Show("Seguro que desea agregar la función?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                         {
                             //Funcion
-                            var consulta = db.Funcions.ToLookup(x => x.IDPELICULA).Count();
+                            var consulta = db.Funcions.ToLookup(x => x.IDFUNCION).Count();
                             try
                             {
                                 using (var transaccion = new TransactionScope())
@@ -110,7 +116,7 @@ namespace Proyecto_Cine
                                         columnas = (int)sa.CANT_COLUMNAS;
                                     }
 
-                                    int c = 1;
+                                    int c = 1; //en la base de datos ya tengo butacas con este numero
                                     for (int x = 1; x <= filas; x++)
                                     {
                                         for (int y = 1; y <= columnas; y++)
@@ -132,7 +138,6 @@ namespace Proyecto_Cine
 
                                     //Guardar Tipos Entrada
                                     int nListas = listaEntrada.Count;
-                                    // from panchos in db.panchos
                                     var consulta3 = db.Funcion_Entradas.ToLookup(x => x.IDENTRADA).Count();
                                     for (int i = 0; i < nListas; i++)
                                     {
@@ -179,19 +184,57 @@ namespace Proyecto_Cine
                 {
                     if (MessageBox.Show("Seguro que desea editar la función?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                     {
-                        var consulta = db.Funcions.Where(x => x.IDFUNCION.Equals(Id)).ToList();
-                        foreach (Funcion fx in consulta)
-                        {
-                            fx.HORARIO = txt_horario.Text;
-                            fx.FECHAFUNCION = txt_fecha.Text;
-                            fx.IDSALA = Convert.ToInt32(cbo_Sala.SelectedValue);
-                            fx.IDCINE = Convert.ToInt32(cbo_Cine.SelectedValue);
-                            fx.IDPELICULA = Convert.ToInt32(cbo_Pelicula.SelectedValue);
-                        }
                         try
                         {
-                            db.SubmitChanges();
-                            MessageBox.Show("Se ha editado correctamente");
+                            using (var transaccion = new TransactionScope())
+                            {
+                                var consulta = db.Funcions.Where(x => x.IDFUNCION.Equals(Id)).ToList();
+                                foreach (Funcion fx in consulta)
+                                {
+                                    fx.HORARIO = horario;
+                                    fx.FECHAFUNCION = fecha;
+                                    fx.IDSALA = idSala;
+                                    fx.IDCINE = idCine;
+                                    fx.IDPELICULA = idPelicula;
+                                }
+
+                                var consultaE = db.Funcion_Entradas.Where(x => x.IDFUNCION.Equals(Id)).ToList();
+                                foreach (Funcion_Entrada fe in consultaE)
+                                {
+                                    fe.HABILITADO = false;
+                                }
+
+                                int nLista = listaEntrada.Count();
+                                for(int x=0; x<nLista; x++)
+                                {
+                                    var consultaD = db.Funcion_Entradas.Where(z => z.IDTIPOENTRADA.Equals(listaEntrada[x].idTipoEntrada) && (z.IDFUNCION.Equals(Id))).ToList();
+                                    var consultaf = db.Funcion_Entradas.ToLookup(z => z.IDENTRADA).Count();
+                                    int veces = consultaD.Count();
+                                    if (veces  == 0) //si no existe se crea
+                                    {
+                                        Funcion_Entrada fe = new Funcion_Entrada
+                                        {
+                                            IDENTRADA = consultaf + 1,
+                                            IDFUNCION = Id,
+                                            IDTIPOENTRADA = listaEntrada[x].idTipoEntrada,
+                                            PRECIO = listaEntrada[x].precio,
+                                            HABILITADO = true
+                                        };
+                                        db.Funcion_Entradas.InsertOnSubmit(fe);
+                                    }
+                                    else //si existe se actualiza
+                                    {
+                                        foreach (Funcion_Entrada fex in consultaD)
+                                        {
+                                            fex.PRECIO = listaEntrada[x].precio;
+                                            fex.HABILITADO = true;
+                                        }
+                                    }
+                                }
+                                db.SubmitChanges();
+                                MessageBox.Show("Se editó correctamente");
+                                transaccion.Complete();
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -228,18 +271,40 @@ namespace Proyecto_Cine
             if (precio <=0)
             {
                 MessageBox.Show("El precio debe ser mayor a 0");
+                dgv_precios.DataSource = listaEntrada.ToList();
                 return;
             }
             var consulta = listaEntrada.Where(x => x.idTipoEntrada.Equals(idTipoEntrada)).Count();
             if (consulta > 0)
             {
                 MessageBox.Show("Ya se registro este tipo de entrada");
+                dgv_precios.DataSource = listaEntrada.ToList();
                 return;
             }
             else
             {
                 listaEntrada.Add(new Entrada { idTipoEntrada = idTipoEntrada, nombreTipo = nombreTipo, precio = precio });
                 dgv_precios.DataSource = listaEntrada.ToList();
+            }
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            if (!(dgv_precios.Rows.Count.Equals(0)))
+            {
+                if (MessageBox.Show("Seguro que desea eliminar el tipo de entrada?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(dgv_precios.CurrentRow.Cells[0].Value);
+                    listaEntrada.RemoveAll(x=>x.idTipoEntrada.Equals(id));
+                    dgv_precios.DataSource = null;
+                    dgv_precios.DataSource = listaEntrada.ToList();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se puede eliminar pues no hay datos");
+                dgv_precios.DataSource = listaEntrada.ToList();
+                return;
             }
         }
     }

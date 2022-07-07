@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Mantenimiento_Funcion));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
@@ -106,9 +107,11 @@
             // 
             // btn_reload
             // 
-            this.btn_reload.Location = new System.Drawing.Point(392, 36);
+            this.btn_reload.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_reload.BackgroundImage")));
+            this.btn_reload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reload.Location = new System.Drawing.Point(391, 36);
             this.btn_reload.Name = "btn_reload";
-            this.btn_reload.Size = new System.Drawing.Size(34, 21);
+            this.btn_reload.Size = new System.Drawing.Size(22, 21);
             this.btn_reload.TabIndex = 23;
             this.btn_reload.UseVisualStyleBackColor = true;
             this.btn_reload.Click += new System.EventHandler(this.btn_reload_Click);

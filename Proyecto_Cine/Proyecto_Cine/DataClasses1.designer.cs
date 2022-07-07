@@ -75,6 +75,12 @@ namespace Proyecto_Cine
     partial void InsertFuncion_Entrada(Funcion_Entrada instance);
     partial void UpdateFuncion_Entrada(Funcion_Entrada instance);
     partial void DeleteFuncion_Entrada(Funcion_Entrada instance);
+    partial void InsertReserva(Reserva instance);
+    partial void UpdateReserva(Reserva instance);
+    partial void DeleteReserva(Reserva instance);
+    partial void InsertDetalle_Reserva(Detalle_Reserva instance);
+    partial void UpdateDetalle_Reserva(Detalle_Reserva instance);
+    partial void DeleteDetalle_Reserva(Detalle_Reserva instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -224,6 +230,22 @@ namespace Proyecto_Cine
 			get
 			{
 				return this.GetTable<Funcion_Entrada>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Reserva> Reservas
+		{
+			get
+			{
+				return this.GetTable<Reserva>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Detalle_Reserva> Detalle_Reservas
+		{
+			get
+			{
+				return this.GetTable<Detalle_Reserva>();
 			}
 		}
 	}
@@ -2669,6 +2691,346 @@ namespace Proyecto_Cine
 					this._IDENTRADA = value;
 					this.SendPropertyChanged("IDENTRADA");
 					this.OnIDENTRADAChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reserva")]
+	public partial class Reserva : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDRESERVA;
+		
+		private System.Nullable<int> _IDCLIENTE;
+		
+		private System.Nullable<int> _IDEMPLEADO;
+		
+		private System.Nullable<decimal> _TOTAL;
+		
+		private bool _HABILITADO;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDRESERVAChanging(int value);
+    partial void OnIDRESERVAChanged();
+    partial void OnIDCLIENTEChanging(System.Nullable<int> value);
+    partial void OnIDCLIENTEChanged();
+    partial void OnIDEMPLEADOChanging(System.Nullable<int> value);
+    partial void OnIDEMPLEADOChanged();
+    partial void OnTOTALChanging(System.Nullable<decimal> value);
+    partial void OnTOTALChanged();
+    partial void OnHABILITADOChanging(bool value);
+    partial void OnHABILITADOChanged();
+    #endregion
+		
+		public Reserva()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDRESERVA
+		{
+			get
+			{
+				return this._IDRESERVA;
+			}
+			set
+			{
+				if ((this._IDRESERVA != value))
+				{
+					this.OnIDRESERVAChanging(value);
+					this.SendPropertyChanging();
+					this._IDRESERVA = value;
+					this.SendPropertyChanged("IDRESERVA");
+					this.OnIDRESERVAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int")]
+		public System.Nullable<int> IDCLIENTE
+		{
+			get
+			{
+				return this._IDCLIENTE;
+			}
+			set
+			{
+				if ((this._IDCLIENTE != value))
+				{
+					this.OnIDCLIENTEChanging(value);
+					this.SendPropertyChanging();
+					this._IDCLIENTE = value;
+					this.SendPropertyChanged("IDCLIENTE");
+					this.OnIDCLIENTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDEMPLEADO", DbType="Int")]
+		public System.Nullable<int> IDEMPLEADO
+		{
+			get
+			{
+				return this._IDEMPLEADO;
+			}
+			set
+			{
+				if ((this._IDEMPLEADO != value))
+				{
+					this.OnIDEMPLEADOChanging(value);
+					this.SendPropertyChanging();
+					this._IDEMPLEADO = value;
+					this.SendPropertyChanged("IDEMPLEADO");
+					this.OnIDEMPLEADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TOTAL", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> TOTAL
+		{
+			get
+			{
+				return this._TOTAL;
+			}
+			set
+			{
+				if ((this._TOTAL != value))
+				{
+					this.OnTOTALChanging(value);
+					this.SendPropertyChanging();
+					this._TOTAL = value;
+					this.SendPropertyChanged("TOTAL");
+					this.OnTOTALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HABILITADO", DbType="Bit NOT NULL")]
+		public bool HABILITADO
+		{
+			get
+			{
+				return this._HABILITADO;
+			}
+			set
+			{
+				if ((this._HABILITADO != value))
+				{
+					this.OnHABILITADOChanging(value);
+					this.SendPropertyChanging();
+					this._HABILITADO = value;
+					this.SendPropertyChanged("HABILITADO");
+					this.OnHABILITADOChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Detalle_Reserva")]
+	public partial class Detalle_Reserva : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDRESERVA;
+		
+		private int _IDCLIENTE;
+		
+		private System.Nullable<int> _PRECIO;
+		
+		private System.Nullable<int> _IDFUNCION;
+		
+		private int _IDBUTACA;
+		
+		private bool _HABILTIADO;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDRESERVAChanging(int value);
+    partial void OnIDRESERVAChanged();
+    partial void OnIDCLIENTEChanging(int value);
+    partial void OnIDCLIENTEChanged();
+    partial void OnPRECIOChanging(System.Nullable<int> value);
+    partial void OnPRECIOChanged();
+    partial void OnIDFUNCIONChanging(System.Nullable<int> value);
+    partial void OnIDFUNCIONChanged();
+    partial void OnIDBUTACAChanging(int value);
+    partial void OnIDBUTACAChanged();
+    partial void OnHABILTIADOChanging(bool value);
+    partial void OnHABILTIADOChanged();
+    #endregion
+		
+		public Detalle_Reserva()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDRESERVA
+		{
+			get
+			{
+				return this._IDRESERVA;
+			}
+			set
+			{
+				if ((this._IDRESERVA != value))
+				{
+					this.OnIDRESERVAChanging(value);
+					this.SendPropertyChanging();
+					this._IDRESERVA = value;
+					this.SendPropertyChanged("IDRESERVA");
+					this.OnIDRESERVAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCLIENTE", DbType="Int NOT NULL")]
+		public int IDCLIENTE
+		{
+			get
+			{
+				return this._IDCLIENTE;
+			}
+			set
+			{
+				if ((this._IDCLIENTE != value))
+				{
+					this.OnIDCLIENTEChanging(value);
+					this.SendPropertyChanging();
+					this._IDCLIENTE = value;
+					this.SendPropertyChanged("IDCLIENTE");
+					this.OnIDCLIENTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRECIO", DbType="Int")]
+		public System.Nullable<int> PRECIO
+		{
+			get
+			{
+				return this._PRECIO;
+			}
+			set
+			{
+				if ((this._PRECIO != value))
+				{
+					this.OnPRECIOChanging(value);
+					this.SendPropertyChanging();
+					this._PRECIO = value;
+					this.SendPropertyChanged("PRECIO");
+					this.OnPRECIOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int")]
+		public System.Nullable<int> IDFUNCION
+		{
+			get
+			{
+				return this._IDFUNCION;
+			}
+			set
+			{
+				if ((this._IDFUNCION != value))
+				{
+					this.OnIDFUNCIONChanging(value);
+					this.SendPropertyChanging();
+					this._IDFUNCION = value;
+					this.SendPropertyChanged("IDFUNCION");
+					this.OnIDFUNCIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBUTACA", DbType="Int NOT NULL")]
+		public int IDBUTACA
+		{
+			get
+			{
+				return this._IDBUTACA;
+			}
+			set
+			{
+				if ((this._IDBUTACA != value))
+				{
+					this.OnIDBUTACAChanging(value);
+					this.SendPropertyChanging();
+					this._IDBUTACA = value;
+					this.SendPropertyChanged("IDBUTACA");
+					this.OnIDBUTACAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HABILTIADO", DbType="Bit NOT NULL")]
+		public bool HABILTIADO
+		{
+			get
+			{
+				return this._HABILTIADO;
+			}
+			set
+			{
+				if ((this._HABILTIADO != value))
+				{
+					this.OnHABILTIADOChanging(value);
+					this.SendPropertyChanging();
+					this._HABILTIADO = value;
+					this.SendPropertyChanged("HABILTIADO");
+					this.OnHABILTIADOChanged();
 				}
 			}
 		}

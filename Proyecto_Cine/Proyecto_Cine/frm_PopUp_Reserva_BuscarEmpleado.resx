@@ -117,36 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btn_reload.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        QmCC
-</value>
-  </data>
 </root>

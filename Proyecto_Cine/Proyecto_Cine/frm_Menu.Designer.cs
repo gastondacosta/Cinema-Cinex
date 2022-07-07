@@ -104,42 +104,42 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.empleadosToolStripMenuItem.Text = "Empleados";
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
             // cinesToolStripMenuItem
             // 
             this.cinesToolStripMenuItem.Name = "cinesToolStripMenuItem";
-            this.cinesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cinesToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.cinesToolStripMenuItem.Text = "Cines";
             this.cinesToolStripMenuItem.Click += new System.EventHandler(this.cinesToolStripMenuItem_Click);
             // 
             // salaToolStripMenuItem
             // 
             this.salaToolStripMenuItem.Name = "salaToolStripMenuItem";
-            this.salaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salaToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.salaToolStripMenuItem.Text = "Sala";
             this.salaToolStripMenuItem.Click += new System.EventHandler(this.salaToolStripMenuItem_Click);
             // 
             // películaToolStripMenuItem
             // 
             this.películaToolStripMenuItem.Name = "películaToolStripMenuItem";
-            this.películaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.películaToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.películaToolStripMenuItem.Text = "Película";
             this.películaToolStripMenuItem.Click += new System.EventHandler(this.películaToolStripMenuItem_Click);
             // 
             // funciónToolStripMenuItem
             // 
             this.funciónToolStripMenuItem.Name = "funciónToolStripMenuItem";
-            this.funciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.funciónToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.funciónToolStripMenuItem.Text = "Función";
             this.funciónToolStripMenuItem.Click += new System.EventHandler(this.funciónToolStripMenuItem_Click);
             // 
@@ -154,8 +154,9 @@
             // reservasToolStripMenuItem1
             // 
             this.reservasToolStripMenuItem1.Name = "reservasToolStripMenuItem1";
-            this.reservasToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
+            this.reservasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.reservasToolStripMenuItem1.Text = "Reservas";
+            this.reservasToolStripMenuItem1.Click += new System.EventHandler(this.reservasToolStripMenuItem1_Click);
             // 
             // salirToolStripMenuItem
             // 
