@@ -26,7 +26,13 @@ namespace Proyecto_Cine
                                         join tipoM in db.Tipo_Modalidads
                                         on empleado.IDTIPO_MODALIDAD equals tipoM.IDTIPO_MODALIDAD
                                         where empleado.HABILITADO.Equals(true)
-                                        select new { empleado.IDEMPLEADO, empleado.NOMBRE_EMPLEADO, empleado.APELLIDO, Cargo = tipoE.NOMBRE, Contrato = tipoM.NOMBRE, empleado.SUELDO, empleado.FECHA_INICIO }).ToList();
+                                        select new { ID = empleado.IDEMPLEADO, Nombre = empleado.NOMBRE_EMPLEADO, Apellido = empleado.APELLIDO, Cargo = tipoE.NOMBRE, Contrato = tipoM.NOMBRE, Sueldo = empleado.SUELDO, empleado.FECHA_INICIO }).ToList();
+
+            dgv_Empleados.Columns[6].HeaderText = "Inicio";
+            for (int i = 0; i <= dgv_Empleados.Columns.Count - 1; i++)
+            {
+                dgv_Empleados.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void frm_Mantenimiento_Empleado_Load(object sender, EventArgs e)
         {
@@ -100,7 +106,12 @@ namespace Proyecto_Cine
                                         join tipoM in db.Tipo_Modalidads
                                         on empleado.IDTIPO_MODALIDAD equals tipoM.IDTIPO_MODALIDAD
                                         where empleado.HABILITADO.Equals(true) && empleado.NOMBRE_EMPLEADO.Contains(txt_Nombre.Text)
-                                        select new { empleado.IDEMPLEADO, empleado.NOMBRE_EMPLEADO, empleado.APELLIDO, Cargo = tipoE.NOMBRE, Modalidad = tipoM.NOMBRE, empleado.SUELDO, empleado.FECHA_INICIO }).ToList();
+                                        select new { ID = empleado.IDEMPLEADO, NOMBRE = empleado.NOMBRE_EMPLEADO, empleado.APELLIDO, Cargo = tipoE.NOMBRE, Modalidad = tipoM.NOMBRE, empleado.SUELDO, empleado.FECHA_INICIO }).ToList();
+
+            for (int i = 0; i <= dgv_Empleados.Columns.Count - 1; i++)
+            {
+                dgv_Empleados.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void toolStripLabel4_Click(object sender, EventArgs e)

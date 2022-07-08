@@ -58,5 +58,28 @@ namespace Proyecto_Cine
             frm_Reserva res = new frm_Reserva();
             res.ShowDialog();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Consulta_Empleado fce = new frm_Consulta_Empleado();
+            fce.ShowDialog();
+        }
+
+        private void reservasPorClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Consulta_Cliente fcc = new frm_Consulta_Cliente();
+            fcc.ShowDialog();
+        }
+
+        private void películasPorGéneroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Consulta_Pelicula fcp = new frm_Consulta_Pelicula();
+            fcp.ShowDialog();
+        }
     }
 }

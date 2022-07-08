@@ -30,6 +30,11 @@ namespace Proyecto_Cine
                                          Fecha = cliente.FECHADENACIMIENTO,
                                          Correo = cliente.CORREO
                                      }).ToList();
+
+            for (int i = 0; i <= dgv_Cliente.Columns.Count - 1; i++)
+            {
+                dgv_Cliente.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void tsl_Editar_Click(object sender, EventArgs e)
         {
@@ -75,8 +80,13 @@ namespace Proyecto_Cine
                                           Fecha = cliente.FECHADENACIMIENTO,
                                           Correo = cliente.CORREO
                                       }).ToList();
+
+            for (int i = 0; i <= dgv_Cliente.Columns.Count - 1; i++)
+            {
+                dgv_Cliente.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
-        string dni, nombre, apellido, nacimiento, correo;
+        
 
         private void tsl_Salir_Click(object sender, EventArgs e)
         {
@@ -114,6 +124,7 @@ namespace Proyecto_Cine
             }
         }
 
+        string dni, nombre, apellido, nacimiento, correo;
         private void dgv_Cliente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             nombre = dgv_Cliente.CurrentRow.Cells[0].Value.ToString();

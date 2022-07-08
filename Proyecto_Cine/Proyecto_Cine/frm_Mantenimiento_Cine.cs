@@ -23,7 +23,14 @@ namespace Proyecto_Cine
                                    join tcines in db.Tipo_Cines
                                    on cines.IDTIPOCINE equals tcines.IDTIPOCINE
                                    where cines.HABILITADO.Equals(true)
-                                   select new { cines.IDCINE, cines.NOMBRE, TIPOCINE = tcines.NOMBRE, cines.DIRECCION, cines.CONTACTO }).ToList();
+                                   select new { cines.IDCINE, Cine = cines.NOMBRE, tcines.NOMBRE, Dirección = cines.DIRECCION, Contacto = cines.CONTACTO }).ToList();
+
+            dgv_Cines.Columns[0].HeaderText = "ID Cine";
+            dgv_Cines.Columns[2].HeaderText = "Tipo";
+            for (int i = 0; i <= dgv_Cines.Columns.Count - 1; i++)
+            {
+                dgv_Cines.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
@@ -44,7 +51,14 @@ namespace Proyecto_Cine
                                     join tcines in db.Tipo_Cines
                                     on cines.IDTIPOCINE equals tcines.IDTIPOCINE
                                     where cines.HABILITADO.Equals(true) && cines.NOMBRE.Contains(txt_Cine.Text)
-                                    select new { cines.IDCINE, cines.NOMBRE, TIPOCINE = tcines.NOMBRE, cines.DIRECCION, cines.CONTACTO }).ToList();
+                                    select new { cines.IDCINE, Cine = cines.NOMBRE, tcines.NOMBRE, Dirección = cines.DIRECCION, Contacto = cines.CONTACTO }).ToList();
+
+            dgv_Cines.Columns[0].HeaderText = "ID Cine";
+            dgv_Cines.Columns[2].HeaderText = "Tipo";
+            for (int i = 0; i <= dgv_Cines.Columns.Count - 1; i++)
+            {
+                dgv_Cines.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void frm_Mantenimiento_Cine_Load(object sender, EventArgs e)

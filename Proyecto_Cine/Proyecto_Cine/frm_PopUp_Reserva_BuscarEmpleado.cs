@@ -21,13 +21,22 @@ namespace Proyecto_Cine
         public string NombreCompleto { get; set; }
         private void frm_PopUp_Reserva_BuscarEmpleado_Load(object sender, EventArgs e)
         {
-            dgv_Empleados.DataSource = db.Empleados.Where(x => x.HABILITADO.Equals(true)).Select(x => new { ID = x.IDEMPLEADO, NOMBRE = x.NOMBRE_EMPLEADO, x.APELLIDO }).ToList();
-            dgv_Empleados.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_Empleados.DataSource = db.Empleados.Where(x => x.HABILITADO.Equals(true)).Select(x => new { ID = x.IDEMPLEADO, Nombre = x.NOMBRE_EMPLEADO, Apellido = x.APELLIDO }).ToList();
+
+            for (int i = 0; i <= dgv_Empleados.Columns.Count - 1; i++)
+            {
+                dgv_Empleados.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void txt_ApellidoEmpleado_TextChanged(object sender, EventArgs e)
         {
-            dgv_Empleados.DataSource = db.Empleados.Where(x => x.HABILITADO.Equals(true) && x.APELLIDO.Contains(txt_ApellidoEmpleado.Text)).Select(x => new { ID = x.IDEMPLEADO, NOMBRE = x.NOMBRE_EMPLEADO, x.APELLIDO }).ToList();
+            dgv_Empleados.DataSource = db.Empleados.Where(x => x.HABILITADO.Equals(true) && x.APELLIDO.Contains(txt_ApellidoEmpleado.Text)).Select(x => new { ID = x.IDEMPLEADO, Nombre = x.NOMBRE_EMPLEADO, Apellido = x.APELLIDO }).ToList();
+
+            for (int i = 0; i <= dgv_Empleados.Columns.Count - 1; i++)
+            {
+                dgv_Empleados.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         string idEmpleado;
         string nombreCompletoE;

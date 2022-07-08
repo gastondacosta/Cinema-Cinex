@@ -73,3 +73,6 @@ C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Ci
 C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.csproj.CoreCompileInputs.cache
 C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.exe
 C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.pdb
+C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.frm_Consulta_Empleado.resources
+C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.frm_Consulta_Cliente.resources
+C:\Users\gibbe\OneDrive\Escritorio\Github\Cinema-Cinex\Proyecto_Cine\Proyecto_Cine\obj\Debug\Proyecto_Cine.frm_Consulta_Pelicula.resources

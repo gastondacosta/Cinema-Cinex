@@ -27,11 +27,16 @@ namespace Proyecto_Cine
                                        join sala in db.Salas
                                        on funcion.IDSALA equals sala.IDSALA
                                        where funcion.HABILITADO.Equals(true)
-                                       select new { funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala= sala.IDSALA }).ToList();
+                                       select new { ID = funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala= sala.IDSALA }).ToList();
 
             cbo_Pelicula.DataSource = db.Peliculas.Where(x => x.HABILITADO.Equals(true));
             cbo_Pelicula.DisplayMember = "TITULO";
             cbo_Pelicula.ValueMember = "IDPELICULA";
+
+            for (int i = 0; i <= dgv_Funciones.Columns.Count - 1; i++)
+            {
+                dgv_Funciones.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void frm_Mantenimiento_Funcion_Load(object sender, EventArgs e)
@@ -104,7 +109,12 @@ namespace Proyecto_Cine
                                             join sala in db.Salas
                                             on funcion.IDSALA equals sala.IDSALA
                                             where funcion.HABILITADO.Equals(true) && funcion.IDPELICULA.Equals(cbo_Pelicula.SelectedValue)
-                                            select new { funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala = sala.IDSALA }).ToList();
+                                            select new { ID = funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala = sala.IDSALA }).ToList();
+
+            for (int i = 0; i <= dgv_Funciones.Columns.Count - 1; i++)
+            {
+                dgv_Funciones.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void btn_reload_Click(object sender, EventArgs e)

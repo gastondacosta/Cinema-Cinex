@@ -19,12 +19,16 @@ namespace Proyecto_Cine
         DataClasses1DataContext db = new DataClasses1DataContext();
         private void Listar()
         {
-            dgv_Empleados.DataSource = (from salas in db.Salas
+            dgv_Cine.DataSource = (from salas in db.Salas
                                     join cine in db.Cines
                                     on salas.IDCINE equals cine.IDCINE
                                     where salas.HABILITADO.Equals(true) && cine.NOMBRE.Equals(comboBox1.Text)
-                                    select new { salas.IDSALA, cine.NOMBRE, salas.CANT_BUTACAS, salas.CANT_FILAS, salas.CANT_COLUMNAS }).ToList();
+                                    select new { Sala = salas.IDSALA, Cine = cine.NOMBRE, Butacas = salas.CANT_BUTACAS, Filas = salas.CANT_FILAS, Columnas = salas.CANT_COLUMNAS }).ToList();
 
+            for (int i = 0; i <= dgv_Cine.Columns.Count - 1; i++)
+            {
+                dgv_Cine.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void frm_Mantenimiento_Sala_Load(object sender, EventArgs e)
         {
@@ -88,7 +92,7 @@ namespace Proyecto_Cine
         int idSala;
         private void dgv_Cines_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idSala = int.Parse(dgv_Empleados.CurrentRow.Cells[0].Value.ToString());
+            idSala = int.Parse(dgv_Cine.CurrentRow.Cells[0].Value.ToString());
         }
 
         private void txt_Cine_TextChanged(object sender, EventArgs e)
@@ -97,11 +101,16 @@ namespace Proyecto_Cine
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgv_Empleados.DataSource = (from salas in db.Salas
+            dgv_Cine.DataSource = (from salas in db.Salas
                                     join cine in db.Cines
                                     on salas.IDCINE equals cine.IDCINE
                                     where salas.HABILITADO.Equals(true) && cine.NOMBRE.Equals(comboBox1.Text)
-                                    select new { salas.IDSALA, cine.NOMBRE, salas.CANT_BUTACAS, salas.CANT_FILAS, salas.CANT_COLUMNAS }).ToList();
+                                    select new { Sala = salas.IDSALA, Cine = cine.NOMBRE, Butacas = salas.CANT_BUTACAS, Filas = salas.CANT_FILAS, Columnas = salas.CANT_COLUMNAS }).ToList();
+
+            for (int i = 0; i <= dgv_Cine.Columns.Count - 1; i++)
+            {
+                dgv_Cine.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
     }
 }

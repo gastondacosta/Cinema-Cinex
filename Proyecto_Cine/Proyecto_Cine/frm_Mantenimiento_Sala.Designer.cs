@@ -29,35 +29,35 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dgv_Empleados = new System.Windows.Forms.DataGridView();
+            this.dgv_Cine = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Empleados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Cine)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(169, 41);
+            this.label1.Location = new System.Drawing.Point(114, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Cine";
             // 
-            // dgv_Empleados
+            // dgv_Cine
             // 
-            this.dgv_Empleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Empleados.Location = new System.Drawing.Point(7, 68);
-            this.dgv_Empleados.Name = "dgv_Empleados";
-            this.dgv_Empleados.ReadOnly = true;
-            this.dgv_Empleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Empleados.Size = new System.Drawing.Size(547, 210);
-            this.dgv_Empleados.TabIndex = 10;
-            this.dgv_Empleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Cines_CellClick);
+            this.dgv_Cine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Cine.Location = new System.Drawing.Point(7, 68);
+            this.dgv_Cine.Name = "dgv_Cine";
+            this.dgv_Cine.ReadOnly = true;
+            this.dgv_Cine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Cine.Size = new System.Drawing.Size(442, 210);
+            this.dgv_Cine.TabIndex = 10;
+            this.dgv_Cine.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Cines_CellClick);
             // 
             // toolStrip1
             // 
@@ -67,7 +67,7 @@
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(560, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(454, 25);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -96,7 +96,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(213, 38);
+            this.comboBox1.Location = new System.Drawing.Point(158, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(166, 21);
             this.comboBox1.TabIndex = 13;
@@ -107,10 +107,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(560, 281);
+            this.ClientSize = new System.Drawing.Size(454, 281);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgv_Empleados);
+            this.Controls.Add(this.dgv_Cine);
             this.Controls.Add(this.toolStrip1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -118,7 +118,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Sala";
             this.Load += new System.EventHandler(this.frm_Mantenimiento_Sala_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Empleados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Cine)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,7 +128,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgv_Empleados;
+        private System.Windows.Forms.DataGridView dgv_Cine;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;

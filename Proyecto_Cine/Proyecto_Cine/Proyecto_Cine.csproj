@@ -54,6 +54,24 @@
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="Entrada.cs" />
+    <Compile Include="frm_Consulta_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Consulta_Cliente.Designer.cs">
+      <DependentUpon>frm_Consulta_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Consulta_Empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Consulta_Empleado.Designer.cs">
+      <DependentUpon>frm_Consulta_Empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Consulta_Pelicula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Consulta_Pelicula.Designer.cs">
+      <DependentUpon>frm_Consulta_Pelicula.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Mantenimiento_Cine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +174,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reserva.cs" />
     <Compile Include="TipoEntrada.cs" />
+    <EmbeddedResource Include="frm_Consulta_Cliente.resx">
+      <DependentUpon>frm_Consulta_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Consulta_Empleado.resx">
+      <DependentUpon>frm_Consulta_Empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Consulta_Pelicula.resx">
+      <DependentUpon>frm_Consulta_Pelicula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Mantenimiento_Cine.resx">
       <DependentUpon>frm_Mantenimiento_Cine.cs</DependentUpon>
     </EmbeddedResource>

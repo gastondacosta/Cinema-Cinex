@@ -21,9 +21,12 @@ namespace Proyecto_Cine
         public string NombreCompleto { get; set; }
         private void Listar()
         {
-            dgv_Cliente.DataSource = db.Clientes.Where(x => x.Habilitado.Equals(true)).Select(x => new { ID = x.IDCLIENTE, x.DNI, x.NOMBRE, x.APELLIDO, x.FECHADENACIMIENTO, x.CORREO }).ToList();
-            dgv_Cliente.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgv_Cliente.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_Cliente.DataSource = db.Clientes.Where(x => x.Habilitado.Equals(true)).Select(x => new { ID = x.IDCLIENTE, x.DNI, Nombre =  x.NOMBRE, Apellido = x.APELLIDO, Nacimiento = x.FECHADENACIMIENTO, Correo = x.CORREO }).ToList();
+
+            for (int i = 0; i <= dgv_Cliente.Columns.Count - 1; i++)
+            {
+                dgv_Cliente.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void frm_PopUp_Reserva_BuscarCliente_Load(object sender, EventArgs e)
         {
@@ -32,7 +35,12 @@ namespace Proyecto_Cine
 
         private void txt_DniBuscar_TextChanged(object sender, EventArgs e)
         {
-            dgv_Cliente.DataSource = db.Clientes.Where(x => x.Habilitado.Equals(true) && x.DNI.Contains(txt_DniBuscar.Text)).Select(x => new { ID = x.IDCLIENTE, x.DNI, x.NOMBRE, x.APELLIDO, x.FECHADENACIMIENTO, x.CORREO }).ToList();
+            dgv_Cliente.DataSource = db.Clientes.Where(x => x.Habilitado.Equals(true) && x.DNI.Contains(txt_DniBuscar.Text)).Select(x => new { ID = x.IDCLIENTE, x.DNI, Nombre = x.NOMBRE, Apellido = x.APELLIDO, Nacimiento = x.FECHADENACIMIENTO, Correo = x.CORREO }).ToList();
+
+            for (int i = 0; i <= dgv_Cliente.Columns.Count - 1; i++)
+            {
+                dgv_Cliente.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void btn_AgregarCliente_Click(object sender, EventArgs e)

@@ -27,7 +27,14 @@ namespace Proyecto_Cine
                                         join censura in db.Censuras
                                         on pelicula.IDTIPOCENSURA equals censura.IDCENSURA
                                         where pelicula.HABILITADO.Equals(true)
-                                        select new { pelicula.IDPELICULA, pelicula.TITULO, generos.NOMBRE_GENERO, censura.NOMBRECENSURA, pelicula.DURACION, pais.PAIS, pelicula.SINOPSIS }).ToList();
+                                        select new { ID = pelicula.IDPELICULA, Título = pelicula.TITULO, Género = generos.NOMBRE_GENERO, Censura = censura.NOMBRECENSURA, Duración = pelicula.DURACION, Pais = pais.PAIS, Sinopsis = pelicula.SINOPSIS }).ToList();
+
+            dgv_Peliculas.Columns[0].HeaderText = "ID Pelicula";
+
+            for (int i = 0; i <= dgv_Peliculas.Columns.Count - 1; i++)
+            {
+                dgv_Peliculas.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         private void frm_Mantenimiento_Pelicula_Load(object sender, EventArgs e)
         {
@@ -44,7 +51,13 @@ namespace Proyecto_Cine
                                         join censura in db.Censuras
                                         on pelicula.IDTIPOCENSURA equals censura.IDCENSURA
                                         where pelicula.HABILITADO.Equals(true) && pelicula.TITULO.Contains(txt_Pelicula.Text)
-                                        select new { pelicula.IDPELICULA,pelicula.TITULO, generos.NOMBRE_GENERO, censura.NOMBRECENSURA, pelicula.DURACION, pais.PAIS, pelicula.SINOPSIS }).ToList();
+                                        select new { ID = pelicula.IDPELICULA, Título = pelicula.TITULO, Género = generos.NOMBRE_GENERO, Censura = censura.NOMBRECENSURA, Duración = pelicula.DURACION, Pais = pais.PAIS, Sinopsis = pelicula.SINOPSIS }).ToList();
+
+            dgv_Peliculas.Columns[0].HeaderText = "ID Pelicula";
+            for (int i = 0; i <= dgv_Peliculas.Columns.Count - 1; i++)
+            {
+                dgv_Peliculas.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)

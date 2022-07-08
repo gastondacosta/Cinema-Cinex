@@ -58,6 +58,14 @@ namespace Proyecto_Cine
                                 where fune.IDFUNCION.Equals(Id) && fune.HABILITADO.Equals(true)
                                select new Entrada { idTipoEntrada = fune.IDTIPOENTRADA, nombreTipo = tipoe.NOMBRE, precio = Convert.ToDecimal(fune.PRECIO) }).ToList();
                 dgv_precios.DataSource = listaEntrada;
+
+                dgv_precios.Columns[0].Visible = false;
+                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                dgv_precios.Columns[2].HeaderText = "Precio";
+                for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                {
+                    dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
             }
         }
         private void cbo_Cine_SelectedValueChanged(object sender, EventArgs e)
@@ -272,6 +280,13 @@ namespace Proyecto_Cine
             {
                 MessageBox.Show("El precio debe ser mayor a 0");
                 dgv_precios.DataSource = listaEntrada.ToList();
+                dgv_precios.Columns[0].Visible = false;
+                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                dgv_precios.Columns[2].HeaderText = "Precio";
+                for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                {
+                    dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
                 return;
             }
             var consulta = listaEntrada.Where(x => x.idTipoEntrada.Equals(idTipoEntrada)).Count();
@@ -279,11 +294,25 @@ namespace Proyecto_Cine
             {
                 MessageBox.Show("Ya se registro este tipo de entrada");
                 dgv_precios.DataSource = listaEntrada.ToList();
+                dgv_precios.Columns[0].Visible = false;
+                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                dgv_precios.Columns[2].HeaderText = "Precio";
+                for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                {
+                    dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
                 return;
             }
             else
             {
                 listaEntrada.Add(new Entrada { idTipoEntrada = idTipoEntrada, nombreTipo = nombreTipo, precio = precio });
+                dgv_precios.Columns[0].Visible = false;
+                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                dgv_precios.Columns[2].HeaderText = "Precio";
+                for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                {
+                    dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
                 dgv_precios.DataSource = listaEntrada.ToList();
             }
         }
@@ -298,12 +327,23 @@ namespace Proyecto_Cine
                     listaEntrada.RemoveAll(x=>x.idTipoEntrada.Equals(id));
                     dgv_precios.DataSource = null;
                     dgv_precios.DataSource = listaEntrada.ToList();
+                    dgv_precios.Columns[0].Visible = false;
+                    dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                    dgv_precios.Columns[2].HeaderText = "Precio";
+                    for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                    {
+                        dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("No se puede eliminar pues no hay datos");
                 dgv_precios.DataSource = listaEntrada.ToList();
+                for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
+                {
+                    dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
                 return;
             }
         }

@@ -28,6 +28,11 @@ namespace Proyecto_Cine
                                      join tipoEntra in db.Tipo_Entradas
                                      on item.IdTipoEntrada equals tipoEntra.IDTIPOENTRADA
                                      select new {Cliente = item.Nombre, Pelicula = item.NombrePelicula, Cine = item.NombreCine, Sala = item.NumeroSala, Fecha = funcion.FECHAFUNCION, Butaca = item.IdButaca, Entrada = tipoEntra.NOMBRE, Precio = item.Precio}).ToList();
+
+            for (int i = 0; i <= dgv_Detalle.Columns.Count - 1; i++)
+            {
+                dgv_Detalle.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
         public decimal SumarPrecios(List<Reservas> listRes)
         {
@@ -126,8 +131,15 @@ namespace Proyecto_Cine
                                  join funcion in db.Funcions
                                  on butaca.IDFUNCION equals funcion.IDFUNCION
                                  where butaca.HABILITADO.Equals(true) && funcion.IDFUNCION.Equals(idFuncionp)
-                                 select new { butaca.IDFUNCION, butaca.IDBUTACA, butaca.LIBRE, butaca.INDICE_FILA, butaca.INDICE_COLUMNA}).ToList();
+                                 select new { butaca.IDFUNCION, butaca.IDBUTACA, Libre = butaca.LIBRE, Fila = butaca.INDICE_FILA, Columna = butaca.INDICE_COLUMNA}).ToList();
                 dgv_Butacas.DataSource = consultaB;
+
+                dgv_Butacas.Columns[0].HeaderText = "ID Función";
+                dgv_Butacas.Columns[1].HeaderText = "ID Butaca";
+                for (int i = 0; i <= dgv_Butacas.Columns.Count - 1; i++)
+                {
+                    dgv_Butacas.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
 
                 //
                 var consultaT = (from funcionE in db.Funcion_Entradas
@@ -151,10 +163,8 @@ namespace Proyecto_Cine
                                join funcione in db.Funcion_Entradas
                                on funcion.IDFUNCION equals funcione.IDFUNCION
                                where funcione.IDFUNCION.Equals(idFunc) && funcione.IDTIPOENTRADA.Equals(tipoEntrada) && funcione.HABILITADO.Equals(true)
-                               select new
-                               {
-                                   funcione.PRECIO
-                               }).ToList();
+                               select new {funcione.PRECIO}).ToList();
+
                 foreach (var item in consulta)
                 {
                     txt_Precio.Text = item.PRECIO.ToString();
