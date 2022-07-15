@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PopUp_Reserva_BuscarEmpleado));
             this.txt_ApellidoEmpleado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_Empleados = new System.Windows.Forms.DataGridView();
@@ -72,11 +73,12 @@
             this.Controls.Add(this.dgv_Empleados);
             this.Controls.Add(this.txt_ApellidoEmpleado);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_PopUp_Reserva_BuscarEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_PopUp_Reserva_BuscarEmpleado";
+            this.Text = "Buscar Empleado";
             this.Load += new System.EventHandler(this.frm_PopUp_Reserva_BuscarEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Empleados)).EndInit();
             this.ResumeLayout(false);

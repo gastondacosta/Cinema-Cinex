@@ -86,13 +86,6 @@ namespace Proyecto_Cine
                 dgv_Cliente.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
-        
-
-        private void tsl_Salir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void tsl_Eliminar_Click(object sender, EventArgs e)
         {
             var consulta = db.Clientes.Where(x => x.DNI.Equals(dni));

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Consulta_Empleado));
             this.cbo_Empleado = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Buscar = new System.Windows.Forms.Button();
@@ -120,6 +121,7 @@
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbo_Empleado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_Consulta_Empleado";

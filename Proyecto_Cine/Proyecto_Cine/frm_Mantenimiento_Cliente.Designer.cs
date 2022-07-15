@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Mantenimiento_Cliente));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsl_Nuevo = new System.Windows.Forms.ToolStripLabel();
             this.tsl_Editar = new System.Windows.Forms.ToolStripLabel();
             this.tsl_Eliminar = new System.Windows.Forms.ToolStripLabel();
-            this.tsl_Salir = new System.Windows.Forms.ToolStripLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Dni = new System.Windows.Forms.TextBox();
             this.dgv_Cliente = new System.Windows.Forms.DataGridView();
@@ -45,8 +45,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsl_Nuevo,
             this.tsl_Editar,
-            this.tsl_Eliminar,
-            this.tsl_Salir});
+            this.tsl_Eliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(565, 25);
@@ -73,13 +72,6 @@
             this.tsl_Eliminar.Size = new System.Drawing.Size(50, 22);
             this.tsl_Eliminar.Text = "Eliminar";
             this.tsl_Eliminar.Click += new System.EventHandler(this.tsl_Eliminar_Click);
-            // 
-            // tsl_Salir
-            // 
-            this.tsl_Salir.Name = "tsl_Salir";
-            this.tsl_Salir.Size = new System.Drawing.Size(29, 22);
-            this.tsl_Salir.Text = "Salir";
-            this.tsl_Salir.Click += new System.EventHandler(this.tsl_Salir_Click);
             // 
             // label1
             // 
@@ -122,6 +114,7 @@
             this.Controls.Add(this.txt_Dni);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_Mantenimiento_Cliente";
@@ -142,7 +135,6 @@
         private System.Windows.Forms.ToolStripLabel tsl_Nuevo;
         private System.Windows.Forms.ToolStripLabel tsl_Editar;
         private System.Windows.Forms.ToolStripLabel tsl_Eliminar;
-        private System.Windows.Forms.ToolStripLabel tsl_Salir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_Dni;
         private System.Windows.Forms.DataGridView dgv_Cliente;

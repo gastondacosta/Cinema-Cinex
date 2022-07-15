@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PopUp_Reserva_BuscarCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_DniBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -214,11 +215,12 @@
             this.ClientSize = new System.Drawing.Size(607, 244);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_PopUp_Reserva_BuscarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_PopUp_Reserva_BuscarCliente";
+            this.Text = "Buscar Cliente";
             this.Load += new System.EventHandler(this.frm_PopUp_Reserva_BuscarCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

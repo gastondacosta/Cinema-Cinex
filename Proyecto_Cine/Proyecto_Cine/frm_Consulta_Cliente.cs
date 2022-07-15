@@ -24,7 +24,7 @@ namespace Proyecto_Cine
                                        on reserva.IDEMPLEADO equals empleado.IDEMPLEADO
                                        join cliente in db.Clientes
                                        on reserva.IDCLIENTE equals cliente.IDCLIENTE
-                                       where reserva.HABILITADO.Equals(true) && reserva.IDCLIENTE.Equals(cliente.DNI)
+                                       where reserva.HABILITADO.Equals(true)// && reserva.IDCLIENTE.Equals(cliente.DNI)
                                        select new { reserva.IDRESERVA, DNI = cliente.DNI, Cliente = cliente.NOMBRE + " " + cliente.APELLIDO, Empleado = empleado.NOMBRE_EMPLEADO + " " + empleado.APELLIDO, Total = reserva.TOTAL }).ToList();
 
             dgv_Cliente.Columns[0].HeaderText = "ID Reserva";

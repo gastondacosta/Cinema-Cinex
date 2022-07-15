@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Mantenimiento_Cine));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsl_Editar = new System.Windows.Forms.ToolStripLabel();
@@ -109,11 +110,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_Cines);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_Mantenimiento_Cine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_Mantenimiento_Cine";
+            this.Text = "Mantenimiento cines";
             this.Load += new System.EventHandler(this.frm_Mantenimiento_Cine_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

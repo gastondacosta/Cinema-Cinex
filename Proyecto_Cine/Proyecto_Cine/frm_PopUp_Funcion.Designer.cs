@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PopUp_Funcion));
             this.Pelicula = new System.Windows.Forms.Label();
             this.cbo_Cine = new System.Windows.Forms.ComboBox();
             this.lbl_Subtitulo = new System.Windows.Forms.Label();
@@ -42,13 +43,13 @@
             this.cbo_Pelicula = new System.Windows.Forms.ComboBox();
             this.cbo_Sala = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
             this.dgv_precios = new System.Windows.Forms.DataGridView();
             this.nud_Precio = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.cbo_tipo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_Eliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_precios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Precio)).BeginInit();
@@ -126,10 +127,13 @@
             // txt_fecha
             // 
             this.txt_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txt_fecha.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_fecha.Location = new System.Drawing.Point(136, 51);
+            this.txt_fecha.MinDate = new System.DateTime(2022, 7, 15, 0, 0, 0, 0);
             this.txt_fecha.Name = "txt_fecha";
             this.txt_fecha.Size = new System.Drawing.Size(148, 20);
             this.txt_fecha.TabIndex = 49;
+            this.txt_fecha.Value = new System.DateTime(2022, 7, 15, 11, 3, 48, 0);
             // 
             // label2
             // 
@@ -190,6 +194,17 @@
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Precios";
+            // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Eliminar.Location = new System.Drawing.Point(156, 94);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Eliminar.TabIndex = 61;
+            this.btn_Eliminar.Text = "Eliminar";
+            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // btn_Agregar
             // 
@@ -255,17 +270,6 @@
             this.label4.TabIndex = 57;
             this.label4.Text = "Tipo";
             // 
-            // btn_Eliminar
-            // 
-            this.btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Eliminar.Location = new System.Drawing.Point(156, 94);
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Eliminar.TabIndex = 61;
-            this.btn_Eliminar.Text = "Eliminar";
-            this.btn_Eliminar.UseVisualStyleBackColor = true;
-            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
-            // 
             // frm_PopUp_Funcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +290,7 @@
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_PopUp_Funcion";

@@ -69,15 +69,15 @@ namespace Proyecto_Cine
     partial void InsertTipo_Entrada(Tipo_Entrada instance);
     partial void UpdateTipo_Entrada(Tipo_Entrada instance);
     partial void DeleteTipo_Entrada(Tipo_Entrada instance);
-    partial void InsertButaca(Butaca instance);
-    partial void UpdateButaca(Butaca instance);
-    partial void DeleteButaca(Butaca instance);
     partial void InsertFuncion_Entrada(Funcion_Entrada instance);
     partial void UpdateFuncion_Entrada(Funcion_Entrada instance);
     partial void DeleteFuncion_Entrada(Funcion_Entrada instance);
     partial void InsertReserva(Reserva instance);
     partial void UpdateReserva(Reserva instance);
     partial void DeleteReserva(Reserva instance);
+    partial void InsertButaca(Butaca instance);
+    partial void UpdateButaca(Butaca instance);
+    partial void DeleteButaca(Butaca instance);
     partial void InsertDetalle_Reserva(Detalle_Reserva instance);
     partial void UpdateDetalle_Reserva(Detalle_Reserva instance);
     partial void DeleteDetalle_Reserva(Detalle_Reserva instance);
@@ -217,14 +217,6 @@ namespace Proyecto_Cine
 			}
 		}
 		
-		public System.Data.Linq.Table<Butaca> Butacas
-		{
-			get
-			{
-				return this.GetTable<Butaca>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Funcion_Entrada> Funcion_Entradas
 		{
 			get
@@ -238,6 +230,14 @@ namespace Proyecto_Cine
 			get
 			{
 				return this.GetTable<Reserva>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Butaca> Butacas
+		{
+			get
+			{
+				return this.GetTable<Butaca>();
 			}
 		}
 		
@@ -2376,188 +2376,6 @@ namespace Proyecto_Cine
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Butaca")]
-	public partial class Butaca : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDFUNCION;
-		
-		private int _IDBUTACA;
-		
-		private int _INDICE_FILA;
-		
-		private int _INDICE_COLUMNA;
-		
-		private bool _LIBRE;
-		
-		private bool _HABILITADO;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDFUNCIONChanging(int value);
-    partial void OnIDFUNCIONChanged();
-    partial void OnIDBUTACAChanging(int value);
-    partial void OnIDBUTACAChanged();
-    partial void OnINDICE_FILAChanging(int value);
-    partial void OnINDICE_FILAChanged();
-    partial void OnINDICE_COLUMNAChanging(int value);
-    partial void OnINDICE_COLUMNAChanged();
-    partial void OnLIBREChanging(bool value);
-    partial void OnLIBREChanged();
-    partial void OnHABILITADOChanging(bool value);
-    partial void OnHABILITADOChanged();
-    #endregion
-		
-		public Butaca()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int NOT NULL")]
-		public int IDFUNCION
-		{
-			get
-			{
-				return this._IDFUNCION;
-			}
-			set
-			{
-				if ((this._IDFUNCION != value))
-				{
-					this.OnIDFUNCIONChanging(value);
-					this.SendPropertyChanging();
-					this._IDFUNCION = value;
-					this.SendPropertyChanged("IDFUNCION");
-					this.OnIDFUNCIONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBUTACA", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDBUTACA
-		{
-			get
-			{
-				return this._IDBUTACA;
-			}
-			set
-			{
-				if ((this._IDBUTACA != value))
-				{
-					this.OnIDBUTACAChanging(value);
-					this.SendPropertyChanging();
-					this._IDBUTACA = value;
-					this.SendPropertyChanged("IDBUTACA");
-					this.OnIDBUTACAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDICE_FILA", DbType="Int NOT NULL")]
-		public int INDICE_FILA
-		{
-			get
-			{
-				return this._INDICE_FILA;
-			}
-			set
-			{
-				if ((this._INDICE_FILA != value))
-				{
-					this.OnINDICE_FILAChanging(value);
-					this.SendPropertyChanging();
-					this._INDICE_FILA = value;
-					this.SendPropertyChanged("INDICE_FILA");
-					this.OnINDICE_FILAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDICE_COLUMNA", DbType="Int NOT NULL")]
-		public int INDICE_COLUMNA
-		{
-			get
-			{
-				return this._INDICE_COLUMNA;
-			}
-			set
-			{
-				if ((this._INDICE_COLUMNA != value))
-				{
-					this.OnINDICE_COLUMNAChanging(value);
-					this.SendPropertyChanging();
-					this._INDICE_COLUMNA = value;
-					this.SendPropertyChanged("INDICE_COLUMNA");
-					this.OnINDICE_COLUMNAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIBRE", DbType="Bit NOT NULL")]
-		public bool LIBRE
-		{
-			get
-			{
-				return this._LIBRE;
-			}
-			set
-			{
-				if ((this._LIBRE != value))
-				{
-					this.OnLIBREChanging(value);
-					this.SendPropertyChanging();
-					this._LIBRE = value;
-					this.SendPropertyChanged("LIBRE");
-					this.OnLIBREChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HABILITADO", DbType="Bit NOT NULL")]
-		public bool HABILITADO
-		{
-			get
-			{
-				return this._HABILITADO;
-			}
-			set
-			{
-				if ((this._HABILITADO != value))
-				{
-					this.OnHABILITADOChanging(value);
-					this.SendPropertyChanging();
-					this._HABILITADO = value;
-					this.SendPropertyChanged("HABILITADO");
-					this.OnHABILITADOChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Funcion_Entrada")]
 	public partial class Funcion_Entrada : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2874,11 +2692,219 @@ namespace Proyecto_Cine
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Butaca")]
+	public partial class Butaca : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDFUNCION;
+		
+		private int _IDBUTACA;
+		
+		private int _INDICE_FILA;
+		
+		private int _INDICE_COLUMNA;
+		
+		private bool _LIBRE;
+		
+		private bool _HABILITADO;
+		
+		private int _PKBUT;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDFUNCIONChanging(int value);
+    partial void OnIDFUNCIONChanged();
+    partial void OnIDBUTACAChanging(int value);
+    partial void OnIDBUTACAChanged();
+    partial void OnINDICE_FILAChanging(int value);
+    partial void OnINDICE_FILAChanged();
+    partial void OnINDICE_COLUMNAChanging(int value);
+    partial void OnINDICE_COLUMNAChanged();
+    partial void OnLIBREChanging(bool value);
+    partial void OnLIBREChanged();
+    partial void OnHABILITADOChanging(bool value);
+    partial void OnHABILITADOChanged();
+    partial void OnPKBUTChanging(int value);
+    partial void OnPKBUTChanged();
+    #endregion
+		
+		public Butaca()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int NOT NULL")]
+		public int IDFUNCION
+		{
+			get
+			{
+				return this._IDFUNCION;
+			}
+			set
+			{
+				if ((this._IDFUNCION != value))
+				{
+					this.OnIDFUNCIONChanging(value);
+					this.SendPropertyChanging();
+					this._IDFUNCION = value;
+					this.SendPropertyChanged("IDFUNCION");
+					this.OnIDFUNCIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDBUTACA", DbType="Int NOT NULL")]
+		public int IDBUTACA
+		{
+			get
+			{
+				return this._IDBUTACA;
+			}
+			set
+			{
+				if ((this._IDBUTACA != value))
+				{
+					this.OnIDBUTACAChanging(value);
+					this.SendPropertyChanging();
+					this._IDBUTACA = value;
+					this.SendPropertyChanged("IDBUTACA");
+					this.OnIDBUTACAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDICE_FILA", DbType="Int NOT NULL")]
+		public int INDICE_FILA
+		{
+			get
+			{
+				return this._INDICE_FILA;
+			}
+			set
+			{
+				if ((this._INDICE_FILA != value))
+				{
+					this.OnINDICE_FILAChanging(value);
+					this.SendPropertyChanging();
+					this._INDICE_FILA = value;
+					this.SendPropertyChanged("INDICE_FILA");
+					this.OnINDICE_FILAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_INDICE_COLUMNA", DbType="Int NOT NULL")]
+		public int INDICE_COLUMNA
+		{
+			get
+			{
+				return this._INDICE_COLUMNA;
+			}
+			set
+			{
+				if ((this._INDICE_COLUMNA != value))
+				{
+					this.OnINDICE_COLUMNAChanging(value);
+					this.SendPropertyChanging();
+					this._INDICE_COLUMNA = value;
+					this.SendPropertyChanged("INDICE_COLUMNA");
+					this.OnINDICE_COLUMNAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIBRE", DbType="Bit NOT NULL")]
+		public bool LIBRE
+		{
+			get
+			{
+				return this._LIBRE;
+			}
+			set
+			{
+				if ((this._LIBRE != value))
+				{
+					this.OnLIBREChanging(value);
+					this.SendPropertyChanging();
+					this._LIBRE = value;
+					this.SendPropertyChanged("LIBRE");
+					this.OnLIBREChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HABILITADO", DbType="Bit NOT NULL")]
+		public bool HABILITADO
+		{
+			get
+			{
+				return this._HABILITADO;
+			}
+			set
+			{
+				if ((this._HABILITADO != value))
+				{
+					this.OnHABILITADOChanging(value);
+					this.SendPropertyChanging();
+					this._HABILITADO = value;
+					this.SendPropertyChanged("HABILITADO");
+					this.OnHABILITADOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PKBUT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PKBUT
+		{
+			get
+			{
+				return this._PKBUT;
+			}
+			set
+			{
+				if ((this._PKBUT != value))
+				{
+					this.OnPKBUTChanging(value);
+					this.SendPropertyChanging();
+					this._PKBUT = value;
+					this.SendPropertyChanged("PKBUT");
+					this.OnPKBUTChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Detalle_Reserva")]
 	public partial class Detalle_Reserva : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NDETALLE;
 		
 		private int _IDRESERVA;
 		
@@ -2886,7 +2912,7 @@ namespace Proyecto_Cine
 		
 		private System.Nullable<int> _PRECIO;
 		
-		private System.Nullable<int> _IDFUNCION;
+		private int _IDFUNCION;
 		
 		private int _IDBUTACA;
 		
@@ -2896,13 +2922,15 @@ namespace Proyecto_Cine
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnNDETALLEChanging(int value);
+    partial void OnNDETALLEChanged();
     partial void OnIDRESERVAChanging(int value);
     partial void OnIDRESERVAChanged();
     partial void OnIDCLIENTEChanging(int value);
     partial void OnIDCLIENTEChanged();
     partial void OnPRECIOChanging(System.Nullable<int> value);
     partial void OnPRECIOChanged();
-    partial void OnIDFUNCIONChanging(System.Nullable<int> value);
+    partial void OnIDFUNCIONChanging(int value);
     partial void OnIDFUNCIONChanged();
     partial void OnIDBUTACAChanging(int value);
     partial void OnIDBUTACAChanged();
@@ -2915,7 +2943,27 @@ namespace Proyecto_Cine
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NDETALLE", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NDETALLE
+		{
+			get
+			{
+				return this._NDETALLE;
+			}
+			set
+			{
+				if ((this._NDETALLE != value))
+				{
+					this.OnNDETALLEChanging(value);
+					this.SendPropertyChanging();
+					this._NDETALLE = value;
+					this.SendPropertyChanged("NDETALLE");
+					this.OnNDETALLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDRESERVA", DbType="Int NOT NULL")]
 		public int IDRESERVA
 		{
 			get
@@ -2975,8 +3023,8 @@ namespace Proyecto_Cine
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int")]
-		public System.Nullable<int> IDFUNCION
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDFUNCION", DbType="Int NOT NULL")]
+		public int IDFUNCION
 		{
 			get
 			{

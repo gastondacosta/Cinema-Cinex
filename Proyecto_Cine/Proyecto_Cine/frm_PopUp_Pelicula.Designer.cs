@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_PopUp_Pelicula));
             this.cbo_Genero = new System.Windows.Forms.ComboBox();
             this.txt_Sinopsis = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -241,6 +242,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_ID);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_PopUp_Pelicula";

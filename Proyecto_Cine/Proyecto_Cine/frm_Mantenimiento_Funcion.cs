@@ -17,17 +17,18 @@ namespace Proyecto_Cine
             InitializeComponent();
         }
         DataClasses1DataContext db = new DataClasses1DataContext();
+        DateTime hoy = DateTime.Now.Date;
         private void Listar()
         {
             dgv_Funciones.DataSource = (from funcion in db.Funcions
-                                       join peli in db.Peliculas
-                                       on funcion.IDPELICULA equals peli.IDPELICULA
-                                       join cine in db.Cines
-                                       on funcion.IDCINE equals cine.IDCINE
-                                       join sala in db.Salas
-                                       on funcion.IDSALA equals sala.IDSALA
-                                       where funcion.HABILITADO.Equals(true)
-                                       select new { ID = funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala= sala.IDSALA }).ToList();
+                                        join peli in db.Peliculas
+                                        on funcion.IDPELICULA equals peli.IDPELICULA
+                                        join cine in db.Cines
+                                        on funcion.IDCINE equals cine.IDCINE
+                                        join sala in db.Salas
+                                        on funcion.IDSALA equals sala.IDSALA
+                                        where funcion.HABILITADO.Equals(true) && Convert.ToDateTime(funcion.FECHAFUNCION) >= hoy
+                                        select new { ID = funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala = sala.IDSALA }).ToList();
 
             cbo_Pelicula.DataSource = db.Peliculas.Where(x => x.HABILITADO.Equals(true));
             cbo_Pelicula.DisplayMember = "TITULO";
@@ -108,7 +109,7 @@ namespace Proyecto_Cine
                                             on funcion.IDCINE equals cine.IDCINE
                                             join sala in db.Salas
                                             on funcion.IDSALA equals sala.IDSALA
-                                            where funcion.HABILITADO.Equals(true) && funcion.IDPELICULA.Equals(cbo_Pelicula.SelectedValue)
+                                            where funcion.HABILITADO.Equals(true) && funcion.IDPELICULA.Equals(cbo_Pelicula.SelectedValue) && Convert.ToDateTime(funcion.FECHAFUNCION) >= hoy
                                             select new { ID = funcion.IDFUNCION, Pelicula = peli.TITULO, Fecha = funcion.FECHAFUNCION, Horario = funcion.HORARIO, Cine = cine.NOMBRE, Sala = sala.IDSALA }).ToList();
 
             for (int i = 0; i <= dgv_Funciones.Columns.Count - 1; i++)

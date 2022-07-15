@@ -18,7 +18,7 @@ namespace Proyecto_Cine
             InitializeComponent();
         }
         DataClasses1DataContext db = new DataClasses1DataContext();
-
+        DateTime hoy = DateTime.Now.Date;
         private void ListarDetalle()
         {
             dgv_Detalle.DataSource = null;
@@ -32,6 +32,23 @@ namespace Proyecto_Cine
             for (int i = 0; i <= dgv_Detalle.Columns.Count - 1; i++)
             {
                 dgv_Detalle.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+        }
+        private void ListarButacas()
+        {
+            int idFuncionp = ((FuncionC)cbo_Funcion.SelectedItem).IdFuncion;
+            var consultaB = (from butaca in db.Butacas
+                             join funcion in db.Funcions
+                             on butaca.IDFUNCION equals funcion.IDFUNCION
+                             where butaca.HABILITADO.Equals(true) && funcion.IDFUNCION.Equals(idFuncionp) && butaca.LIBRE.Equals(true)
+                             select new { butaca.IDFUNCION, butaca.IDBUTACA, Libre = butaca.LIBRE, Fila = butaca.INDICE_FILA, Columna = butaca.INDICE_COLUMNA }).ToList();
+            dgv_Butacas.DataSource = consultaB;
+            dgv_Butacas.Columns[0].Visible = false;
+            dgv_Butacas.Columns[1].HeaderText = "Butaca";
+            dgv_Butacas.Columns[2].Visible = false;
+            for (int i = 0; i <= dgv_Butacas.Columns.Count - 1; i++)
+            {
+                dgv_Butacas.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
         public decimal SumarPrecios(List<Reservas> listRes)
@@ -83,17 +100,19 @@ namespace Proyecto_Cine
                 var consulta = (from funcion in db.Funcions
                                       join peli in db.Peliculas
                                       on funcion.IDPELICULA equals peli.IDPELICULA
-                                      where funcion.IDCINE.Equals(cbo_Cine.SelectedValue) // && Convert.ToDateTime(funcion.FECHAFUNCION) > DateTime.Now
-                                      select new PeliculaC {IdPel = peli.IDPELICULA, TituloP = peli.TITULO}).Distinct().ToList();
+                                      where funcion.IDCINE.Equals(cbo_Cine.SelectedValue) && Convert.ToDateTime(funcion.FECHAFUNCION) >= hoy
+                                select new PeliculaC {IdPel = peli.IDPELICULA, TituloP = peli.TITULO}).Distinct().ToList();
+
                 if (consulta.Count == 0)
                 {
                     cbo_Funcion.DataSource = null;
                     txt_Sala.Text = "";
+                    txt_Horario.Text = "";
                     cbo_TipoE.DataSource = null;
                     txt_Precio.Text = "";
                 }
+
                 cbo_Peli.DataSource = consulta;
-                //cbo_Peli.Text = "";
                 cbo_Peli.ValueMember = "IdPel";
                 cbo_Peli.DisplayMember = "TituloP";
             }
@@ -104,9 +123,10 @@ namespace Proyecto_Cine
             if (cbo_Peli.SelectedValue != null)
             {
                 var consulta = (from funcion in db.Funcions
-                                          where funcion.IDPELICULA.Equals(cbo_Peli.SelectedValue) && funcion.IDCINE.Equals(cbo_Cine.SelectedValue) // && Convert.ToDateTime(funcion.FECHAFUNCION) > DateTime.Now
-                                          select new FuncionC{ IdFuncion = funcion.IDFUNCION, FechaFuncion = Convert.ToDateTime(funcion.FECHAFUNCION)}).ToList();
+                                          where funcion.IDPELICULA.Equals(cbo_Peli.SelectedValue) && funcion.IDCINE.Equals(cbo_Cine.SelectedValue) && Convert.ToDateTime(funcion.FECHAFUNCION) >= hoy
+                                select new FuncionC{ IdFuncion = funcion.IDFUNCION, FechaFuncion = Convert.ToDateTime(funcion.FECHAFUNCION)}).ToList();
                 cbo_Funcion.DataSource = consulta;
+                cbo_Funcion.DisplayMember = "FechaFuncion";
                 cbo_Funcion.ValueMember = "IdFuncion";
             }
         }
@@ -115,33 +135,20 @@ namespace Proyecto_Cine
         {
             if (cbo_Funcion.SelectedValue != null)
             {
-                int idFuncionp = ((Funcion)cbo_Funcion.SelectedItem).IDFUNCION; //?
+                int idFuncionp = ((FuncionC)cbo_Funcion.SelectedItem).IdFuncion;
                 var consulta = (from funcion in db.Funcions
                                 join sala in db.Salas
                                 on funcion.IDSALA equals sala.IDSALA
                                where funcion.IDFUNCION.Equals(idFuncionp)
-                            select sala.IDSALA).ToList();
+                            select new {funcion.HORARIO ,sala.IDSALA }).ToList();
                 foreach (var item in consulta)
                 {
-                    txt_Sala.Text = item.ToString();
+                    txt_Horario.Text = item.HORARIO.ToString();
+                    txt_Sala.Text = item.IDSALA.ToString();
                 }
 
-                //?
-                var consultaB = (from butaca in db.Butacas
-                                 join funcion in db.Funcions
-                                 on butaca.IDFUNCION equals funcion.IDFUNCION
-                                 where butaca.HABILITADO.Equals(true) && funcion.IDFUNCION.Equals(idFuncionp)
-                                 select new { butaca.IDFUNCION, butaca.IDBUTACA, Libre = butaca.LIBRE, Fila = butaca.INDICE_FILA, Columna = butaca.INDICE_COLUMNA}).ToList();
-                dgv_Butacas.DataSource = consultaB;
+                ListarButacas();
 
-                dgv_Butacas.Columns[0].HeaderText = "ID Función";
-                dgv_Butacas.Columns[1].HeaderText = "ID Butaca";
-                for (int i = 0; i <= dgv_Butacas.Columns.Count - 1; i++)
-                {
-                    dgv_Butacas.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                }
-
-                //
                 var consultaT = (from funcionE in db.Funcion_Entradas
                                  join tipoE in db.Tipo_Entradas
                                  on funcionE.IDTIPOENTRADA equals tipoE.IDTIPOENTRADA
@@ -157,8 +164,8 @@ namespace Proyecto_Cine
         {
             if (cbo_TipoE.SelectedValue != null)
             {
-                int idFunc = ((Funcion)cbo_Funcion.SelectedItem).IDFUNCION;
-                int tipoEntrada = ((Tipo_Entrada)cbo_TipoE.SelectedItem).IDTIPOENTRADA;
+                int idFunc = ((FuncionC)cbo_Funcion.SelectedItem).IdFuncion;
+                int tipoEntrada = ((TipoEntrada)cbo_TipoE.SelectedItem).IdTipoEntrada;
                 var consulta = (from funcion in db.Funcions
                                join funcione in db.Funcion_Entradas
                                on funcion.IDFUNCION equals funcione.IDFUNCION
@@ -181,14 +188,14 @@ namespace Proyecto_Cine
                 {
                     var consulta = db.Reservas.ToLookup(x => x.IDRESERVA).Count();
                     int idCliente = Convert.ToInt32(txt_DniCliente.Text);
-                    int idFuncion = ((Funcion)cbo_Funcion.SelectedItem).IDFUNCION;
-                    int idButaca = Convert.ToInt32(dgv_Butacas.CurrentRow.Cells[5].Value);
-                    int idTipoEntrada = ((Tipo_Entrada)cbo_TipoE.SelectedItem).IDTIPOENTRADA;
+                    int idFuncion = ((FuncionC)cbo_Funcion.SelectedItem).IdFuncion;
+                    int idButaca = Convert.ToInt32(dgv_Butacas.CurrentRow.Cells[1].Value);
+                    int idTipoEntrada = ((TipoEntrada)cbo_TipoE.SelectedItem).IdTipoEntrada;
                     decimal precio = Convert.ToDecimal(txt_Precio.Text);
                     string nombreCliente = txt_NombreCliente.Text;
-                    DateTime fechaFuncion = Convert.ToDateTime(((Funcion)cbo_Funcion.SelectedItem).FECHAFUNCION); //hay que agregarle hora tmb a la fecha
+                    DateTime fechaFuncion = Convert.ToDateTime(((FuncionC)cbo_Funcion.SelectedItem).FechaFuncion); //hay que agregarle hora tmb a la fecha
                     string nombreCine = ((Cine)cbo_Cine.SelectedItem).NOMBRE;
-                    string nombrePelicula = ((Pelicula)cbo_Peli.SelectedItem).TITULO;
+                    string nombrePelicula = ((PeliculaC)cbo_Peli.SelectedItem).TituloP;
                     int numeroSala = Convert.ToInt32(txt_Sala.Text);
                     Reservas reser = new Reservas
                     {
@@ -213,7 +220,6 @@ namespace Proyecto_Cine
                         MessageBox.Show("La butaca que eligió ya ha sido seleccionada");
                         return;
                     }
-
                     listRes.Add(reser);
                     ListarDetalle();
                     decimal suma = SumarPrecios(listRes);
@@ -229,9 +235,10 @@ namespace Proyecto_Cine
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            DateTime fechaFuncion = (DateTime)dgv_Detalle.CurrentRow.Cells[4].Value;
+            DateTime fechaFuncion = Convert.ToDateTime(dgv_Detalle.CurrentRow.Cells[4].Value);
             string nombreCompleto = dgv_Detalle.CurrentRow.Cells[0].Value.ToString();
-            listRes.RemoveAll(x=>x.FechaFuncion.Equals(fechaFuncion) && x.Nombre.Equals(nombreCompleto));
+            int nButaca = Convert.ToInt32(dgv_Detalle.CurrentRow.Cells[5].Value);
+            listRes.RemoveAll(x=>x.FechaFuncion.Equals(fechaFuncion) && x.Nombre.Equals(nombreCompleto) && x.IdButaca.Equals(nButaca));
             ListarDetalle();
             decimal suma = SumarPrecios(listRes);
             txt_PrecioFinal.Text = suma.ToString();
@@ -244,10 +251,12 @@ namespace Proyecto_Cine
                 int idCliente = Convert.ToInt32(txt_DniCliente.Text);
                 int idEmpleado = Convert.ToInt32(txt_CodigoEmpleado.Text);
                 decimal total = Convert.ToDecimal(txt_PrecioFinal.Text);
+                var consulta = db.Reservas.ToLookup(x => x.IDRESERVA).Count;
                 using (var transaccion = new TransactionScope())
                 {
                     Reserva res = new Reserva()
                     {
+                        IDRESERVA = consulta + 1,
                         IDCLIENTE = idCliente,
                         IDEMPLEADO = idEmpleado,
                         TOTAL = total,
@@ -258,12 +267,14 @@ namespace Proyecto_Cine
 
                     int idReserva = res.IDRESERVA;
                     int nListaReserva = listRes.Count();
-                    for (int i = 0; i > nListaReserva; i++) //revisar
+                    for (int i = 0; i < nListaReserva; i++)
                     {
                         int idFun = listRes[i].IdFuncion;
                         int idBut = listRes[i].IdButaca;
+                        int nDetalle = db.Detalle_Reservas.ToLookup(x => x.NDETALLE).Count;
                         Detalle_Reserva detRes = new Detalle_Reserva()
                         {
+                            NDETALLE = nDetalle + i,
                             IDRESERVA = idReserva,
                             IDCLIENTE = listRes[i].IdCliente,
                             PRECIO = Convert.ToInt32(listRes[i].Precio),
@@ -273,17 +284,19 @@ namespace Proyecto_Cine
                         };
                         db.Detalle_Reservas.InsertOnSubmit(detRes);
 
-                        var butaca = db.Butacas.Where(x => x.IDFUNCION.Equals(idFun) && x.IDBUTACA.Equals(idBut));
+                        var butaca = db.Butacas.Where(x => x.IDFUNCION.Equals(idFun) && x.IDBUTACA.Equals(idBut)).ToList();
+
                         foreach (var item in butaca)
                         {
                             item.LIBRE = false;
                         }
+                        db.SubmitChanges();
                     }
                     db.SubmitChanges();
                     transaccion.Complete();
-
-                
-                }    
+                }
+                ListarButacas();
+                MessageBox.Show("Se ha agregado con éxito.");
             }
             catch (Exception ex)
             {

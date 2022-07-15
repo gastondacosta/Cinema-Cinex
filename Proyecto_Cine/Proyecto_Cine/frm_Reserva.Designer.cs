@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Reserva));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_NombreCliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +62,8 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_PrecioFinal = new System.Windows.Forms.TextBox();
+            this.txt_Horario = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Butacas)).BeginInit();
@@ -184,6 +187,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txt_Horario);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.dgv_Butacas);
             this.groupBox2.Controls.Add(this.txt_Sala);
             this.groupBox2.Controls.Add(this.label8);
@@ -196,7 +201,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(551, 170);
+            this.groupBox2.Size = new System.Drawing.Size(551, 194);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Reserva";
@@ -204,16 +209,16 @@
             // dgv_Butacas
             // 
             this.dgv_Butacas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Butacas.Location = new System.Drawing.Point(261, 14);
+            this.dgv_Butacas.Location = new System.Drawing.Point(272, 14);
             this.dgv_Butacas.Name = "dgv_Butacas";
             this.dgv_Butacas.ReadOnly = true;
             this.dgv_Butacas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Butacas.Size = new System.Drawing.Size(284, 150);
+            this.dgv_Butacas.Size = new System.Drawing.Size(273, 171);
             this.dgv_Butacas.TabIndex = 17;
             // 
             // txt_Sala
             // 
-            this.txt_Sala.Location = new System.Drawing.Point(94, 132);
+            this.txt_Sala.Location = new System.Drawing.Point(88, 164);
             this.txt_Sala.Name = "txt_Sala";
             this.txt_Sala.ReadOnly = true;
             this.txt_Sala.Size = new System.Drawing.Size(150, 21);
@@ -222,7 +227,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 135);
+            this.label8.Location = new System.Drawing.Point(10, 167);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 15);
             this.label8.TabIndex = 16;
@@ -232,7 +237,7 @@
             // 
             this.cbo_Funcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_Funcion.FormattingEnabled = true;
-            this.cbo_Funcion.Location = new System.Drawing.Point(94, 98);
+            this.cbo_Funcion.Location = new System.Drawing.Point(88, 98);
             this.cbo_Funcion.Name = "cbo_Funcion";
             this.cbo_Funcion.Size = new System.Drawing.Size(150, 23);
             this.cbo_Funcion.TabIndex = 15;
@@ -251,7 +256,7 @@
             // 
             this.cbo_Peli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_Peli.FormattingEnabled = true;
-            this.cbo_Peli.Location = new System.Drawing.Point(94, 64);
+            this.cbo_Peli.Location = new System.Drawing.Point(88, 64);
             this.cbo_Peli.Name = "cbo_Peli";
             this.cbo_Peli.Size = new System.Drawing.Size(150, 23);
             this.cbo_Peli.TabIndex = 13;
@@ -270,7 +275,7 @@
             // 
             this.cbo_Cine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_Cine.FormattingEnabled = true;
-            this.cbo_Cine.Location = new System.Drawing.Point(94, 30);
+            this.cbo_Cine.Location = new System.Drawing.Point(88, 30);
             this.cbo_Cine.Name = "cbo_Cine";
             this.cbo_Cine.Size = new System.Drawing.Size(150, 23);
             this.cbo_Cine.TabIndex = 11;
@@ -295,7 +300,7 @@
             this.groupBox3.Controls.Add(this.btn_Agregar);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 296);
+            this.groupBox3.Location = new System.Drawing.Point(12, 316);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(551, 202);
             this.groupBox3.TabIndex = 10;
@@ -313,7 +318,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(248, 19);
+            this.label9.Location = new System.Drawing.Point(248, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 15);
             this.label9.TabIndex = 19;
@@ -365,7 +370,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(21, 18);
+            this.label12.Location = new System.Drawing.Point(18, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 15);
             this.label12.TabIndex = 0;
@@ -374,7 +379,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_Aceptar.Location = new System.Drawing.Point(173, 550);
+            this.btn_Aceptar.Location = new System.Drawing.Point(173, 570);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(75, 23);
             this.btn_Aceptar.TabIndex = 11;
@@ -385,7 +390,7 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancelar.Location = new System.Drawing.Point(306, 550);
+            this.btn_Cancelar.Location = new System.Drawing.Point(306, 570);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 12;
@@ -396,7 +401,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(177, 518);
+            this.label10.Location = new System.Drawing.Point(177, 538);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(68, 15);
             this.label10.TabIndex = 20;
@@ -404,18 +409,35 @@
             // 
             // txt_PrecioFinal
             // 
-            this.txt_PrecioFinal.Location = new System.Drawing.Point(251, 515);
+            this.txt_PrecioFinal.Location = new System.Drawing.Point(251, 535);
             this.txt_PrecioFinal.Name = "txt_PrecioFinal";
             this.txt_PrecioFinal.ReadOnly = true;
             this.txt_PrecioFinal.Size = new System.Drawing.Size(130, 20);
             this.txt_PrecioFinal.TabIndex = 20;
+            // 
+            // txt_Horario
+            // 
+            this.txt_Horario.Location = new System.Drawing.Point(88, 132);
+            this.txt_Horario.Name = "txt_Horario";
+            this.txt_Horario.ReadOnly = true;
+            this.txt_Horario.Size = new System.Drawing.Size(150, 21);
+            this.txt_Horario.TabIndex = 18;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 135);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 15);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Horario";
             // 
             // frm_Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleVioletRed;
-            this.ClientSize = new System.Drawing.Size(575, 587);
+            this.ClientSize = new System.Drawing.Size(575, 608);
             this.Controls.Add(this.txt_PrecioFinal);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_Cancelar);
@@ -423,6 +445,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_Reserva";
@@ -477,5 +500,7 @@
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_PrecioFinal;
+        private System.Windows.Forms.TextBox txt_Horario;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Principal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsm_Archivo = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reservasPorClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +53,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_Archivo,
             this.consultasToolStripMenuItem,
             this.mantenimientosToolStripMenuItem,
             this.procesosToolStripMenuItem,
@@ -64,13 +62,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(739, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // tsm_Archivo
-            // 
-            this.tsm_Archivo.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Archivo.Image")));
-            this.tsm_Archivo.Name = "tsm_Archivo";
-            this.tsm_Archivo.Size = new System.Drawing.Size(76, 20);
-            this.tsm_Archivo.Text = "Archivo";
             // 
             // consultasToolStripMenuItem
             // 
@@ -212,10 +203,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cine  Moviex";
+            this.Text = "Cinex";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -244,7 +236,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem tsm_Archivo;
     }
 }
 

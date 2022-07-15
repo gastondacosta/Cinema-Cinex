@@ -93,7 +93,7 @@ namespace Proyecto_Cine
                         if (MessageBox.Show("Seguro que desea agregar la función?", "Agregar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                         {
                             //Funcion
-                            var consulta = db.Funcions.ToLookup(x => x.IDFUNCION).Count();
+                            var consulta = db.Funcions.Max(x => x.IDFUNCION);
                             try
                             {
                                 using (var transaccion = new TransactionScope())
@@ -306,14 +306,14 @@ namespace Proyecto_Cine
             else
             {
                 listaEntrada.Add(new Entrada { idTipoEntrada = idTipoEntrada, nombreTipo = nombreTipo, precio = precio });
-                dgv_precios.Columns[0].Visible = false;
-                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
-                dgv_precios.Columns[2].HeaderText = "Precio";
                 for (int i = 0; i <= dgv_precios.Columns.Count - 1; i++)
                 {
                     dgv_precios.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
                 dgv_precios.DataSource = listaEntrada.ToList();
+                dgv_precios.Columns[0].Visible = false;
+                dgv_precios.Columns[1].HeaderText = "Tipo de entrada";
+                dgv_precios.Columns[2].HeaderText = "Precio";
             }
         }
 
